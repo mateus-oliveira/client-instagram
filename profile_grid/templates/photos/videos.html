@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+    <br/>
+    <h1>Vídeos de {{ user.username }}</h1>
+    <br />
+    <br />
+
+    {% for video in data %}
+        {% if video.media_type == 'VIDEO' %}
+            <video width="320" height="240" controls>
+                <source src="{{ video.media_url }}">
+                Your browser does not support the video tag.
+            </video>
+        {% endif %}
+    {% endfor %}
+{% endblock conteudo %}

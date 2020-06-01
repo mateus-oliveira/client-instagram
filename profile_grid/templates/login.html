@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% load static %}
+{% load filters %}
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Profile on Instagram</title>
+        <link rel="stylesheet" href="{% static 'app/css/bootstrap.min.css' %}">
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">{{ title }}</a>
+        </nav>
+
+        <main class="container">
+            <br/>
+            <h1>Login</h1>
+            <br />
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    {{ form_user.username.errors }}
+                    <label>Username</label>
+                    {{ form_user.username|addclass:'form-control' }}
+                </div>
+                
+                <div class="form-group">
+                    <input class="btn btn-primary mb-3" type="submit" value="Login">
+                </div>
+            </form>
+        </main>
+    </body>
+</html>

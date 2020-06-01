@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+    <br/>
+    <h1>Imagens de {{ user.username }}</h1>
+    <br />
+    <br />
+
+    {% for image in data %}
+        {% if image.media_type == 'IMAGE' %}
+            <img src="{{ image.media_url }}" alt="{{ image.caption }}" width='20%'/>
+        {% endif %}
+    {% endfor %}
+{% endblock conteudo %}
