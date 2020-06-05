@@ -18,5 +18,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('profile_grid.urls')),
+    path(r'accounts/', include('django.contrib.auth.urls')),
+    path('', include('profile_grid.urls'), name='profile_grid'),
+    path('', include('social_django.urls'), name='social'),
 ]
