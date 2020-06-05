@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Profile on Instagram</title>
+        <link rel="stylesheet" href="{% static 'app/css/bootstrap.min.css' %}">
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">Profile</a>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'images' user.username %}">Imagens</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'videos' user.username %}">Vídeos</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <main class="container">
+            {% block conteudo %}
+            {% endblock conteudo %}
+        </main>
+    </body>
+</html>
