@@ -16,10 +16,3 @@ def profile(request):
     if not request.user.is_authenticated:
         return HttpResponseRedirect('/')
     return render(request, 'profile.html', {})
-
-def images(request):
-    if not request.user.is_authenticated:
-        return HttpResponseRedirect('/')
-    print(request.user)
-    return render(request, 'profile.html', {})
-

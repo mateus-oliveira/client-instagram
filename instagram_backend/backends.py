@@ -20,7 +20,6 @@ class InstagramOAuth2(BaseOAuth2):
     USER_DATA_URL = "https://graph.instagram.com/" 
 
     def user_data(self, access_token, *args, **kwargs):
-        print("KWARGS",kwargs)
         return self.request(
             url="{}{}".format(self.USER_DATA_URL, kwargs['response']['user_id']),
             method='GET',
@@ -29,36 +28,29 @@ class InstagramOAuth2(BaseOAuth2):
                 "access_token": access_token,
             }
         ).json()
-        # media = self.request(
-        #     url=self.USER_DATA_URL,
-        #     method='GET',
-        #     params={
-        #         "fields": "id,media_type,media_url,username,timestamp",
-        #         "access_token": access_token,
-        #     }
-        # ).json()
 
     def get_user_details(self, response):
-        print(json.dumps(
-            response,
-            sort_keys=True,
-            indent=4,
-            separators=(',', ': '),
-        ))
+        # print(json.dumps(
+        #     response,
+        #     sort_keys=True,
+        #     indent=4,
+        #     separators=(',', ': '),
+        # ))
 
         new_user = User(
             id_instagram=response[self.ID_KEY],
             username=response['username'],
-            accsess_token=response["access_token"],
+            access_token=response["access_token"],
         )
-        create_user(new_user)
-        
-        
-        first_name = response['username'], 
-        last_name = response["account_type"]
+
+        user = find_user(new_user.id_instagram)
+
+        if user == None:
+            create_user(new_user)
+        else:
+            update_user(user, new_user)
 
         return {
-            'username': response[self.ID_KEY],
-            'first_name': first_name[0],
-            'last_name': last_name,
-        }
+            'username': str(response["username"]),
+            'first_name': str(response["username"]),
+        } # Tabela auth_user

@@ -1,15 +1,15 @@
- class User:
-    def __init__(self, id_instagram, username, accsess_token):
+class User:
+    def __init__(self, id_instagram, username, access_token):
         self.__id_instagram = id_instagram
         self.__username = username
-        self.__accsess_token = accsess_token
+        self.__access_token = access_token
 
     @property
-    def accsess_token(self):
-        return self.__accsess_token
-    @accsess_token.setter
-    def accsess_token(self, accsess_token):
-        self.__accsess_token = accsess_token
+    def access_token(self):
+        return self.__access_token
+    @access_token.setter
+    def access_token(self, access_token):
+        self.__access_token = access_token
         
     @property
     def id_instagram(self):
