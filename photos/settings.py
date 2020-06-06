@@ -82,8 +82,12 @@ WSGI_APPLICATION = 'photos.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'photos',
+        'USER': 'root',
+        'PASSWORD': 'Hubbi@2020',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
 
